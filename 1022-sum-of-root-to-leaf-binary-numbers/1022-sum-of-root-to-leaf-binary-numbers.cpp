@@ -13,15 +13,15 @@ class Solution {
 public:
     int sumRootToLeaf(TreeNode* root, int sum = 0)
     {
-        if(!root)
+        if(root == NULL)
             return 0;
         
-         // sum = sum^2 + root->val;     // Normal Math
-        sum = sum << 1 | root->val;     // same thing using bits
+        sum=(sum<<1)+(root->val);
         
-        if(!root->left && !root->right)
+        if(root->left == NULL && root->right == NULL)
             return sum;
         
         return sumRootToLeaf(root->left,sum) + sumRootToLeaf(root->right,sum);
+          
     }
 };
