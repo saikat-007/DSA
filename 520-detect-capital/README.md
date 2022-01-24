@@ -1,3 +1,5 @@
+URL : https://leetcode.com/problems/detect-capital/
+
 <h2><a href="https://leetcode.com/problems/detect-capital/">520. Detect Capital</a></h2><h3>Easy</h3><hr><div><p>We define the usage of capitals in a word to be right when one of the following cases holds:</p>
 
 <ul>
