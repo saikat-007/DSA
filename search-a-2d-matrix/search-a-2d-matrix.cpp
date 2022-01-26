@@ -3,25 +3,24 @@ public:
     bool searchMatrix(vector<vector<int>>& mat, int target) 
     {
         if(mat.size() == 0)
-                return false;
+            return false;
         
-        int n=mat.size();
-        int m=mat[0].size();
-        
-        int low=0;
-        int high=(n*m-1);
+        int m=mat.size();
+        int n=mat[0].size();
+        int low=0,high=m*n-1;
         
         while(low<=high)
         {
-            int mid=(low+high)/2;
-            if(mat[mid/m][mid%m] == target)
-                    return true;
+            int mid=low+(high-low)/2;
             
-            else if(mat[mid/m][mid%m] < target)
-                    low++;
+            if(mat[mid/n][mid%n] == target)      // dividing mid by column gives row index and modulo by column gives column index
+                return true;
+            
+            else if(mat[mid/n][mid%n] < target)
+                low=mid+1;
             
             else
-                high--;
+                high=mid-1;
         }
         return false;
     }
