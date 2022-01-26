@@ -27,17 +27,17 @@ public:
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2)
     {
         vector<int>res;
-        vector<int>v1;
-        vector<int>v2;
+        // vector<int>v1;
+        // vector<int>v2;
         
-        inorder(v1,root1);
-        inorder(v2,root2);
+        inorder(res,root1);
+        inorder(res,root2);
         
-        for(int i=0;i<v1.size();i++)
-            res.push_back(v1[i]);
+//         for(int i=0;i<v1.size();i++)
+//             res.push_back(v1[i]);
         
-        for(int i=0;i<v2.size();i++)
-            res.push_back(v2[i]);
+//         for(int i=0;i<v2.size();i++)
+//             res.push_back(v2[i]);
         
         sort(res.begin(),res.end());
         
