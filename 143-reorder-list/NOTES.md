@@ -1,7 +1,7 @@
 ​There are three concept used in this question:
 
-a -> Reversing a linked list
-b -> finding middle point of a LL (Using slow pointer - fast pointer concept)
+a -> Reversing a linked list , 
+b -> finding middle point of a LL (Using slow pointer - fast pointer concept) , 
 c -> merging two lists
 
 
