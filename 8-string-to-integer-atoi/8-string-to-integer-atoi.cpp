@@ -19,12 +19,14 @@ public:
             sign=-1;
         
         i = (s[0] == '+' || s[0] == '-')?1:0;
+        
         while(i<s.length())
         {
             if(s[i] == ' ' || !isdigit(s[i]))
                 break;
             
             ans = ans*10+(s[i] - '0');
+            
             if(sign*ans < INT_MIN)
                 return INT_MIN;
             
