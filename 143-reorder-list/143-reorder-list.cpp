@@ -29,18 +29,18 @@ public:
     {
         // step-1 : finding middle of the list using fast and slow pointer
         
-        ListNode*slow = head;
-        ListNode*fast = head;
+        ListNode*slow,*fast;
+        slow=fast=head;
         
         while(fast!=NULL && fast->next!=NULL)
         {
-            slow = slow->next;
+            slow=slow->next;
             fast=fast->next->next;
         }
         
         //step-2 : Reverse the second half and split the list into two independent list
         
-        ListNode*second = reverseList(slow -> next); //second list
+        ListNode*second = reverseList(slow->next);   //second list
         ListNode*first = head;                       //first list
         slow->next = NULL;                           //to break the link with first list
         
