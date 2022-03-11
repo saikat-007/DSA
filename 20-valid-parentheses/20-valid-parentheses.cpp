@@ -1,46 +1,50 @@
 class Solution {
 public:
-    
-    bool isValid(string s) 
+    bool isValid(string s)
     {
-        stack<char>stk;
         char c;
-        for(int i=0;i<s.length();i++)
+        int i=0;
+        stack<char>stk;
+        while(s[i]!='\0')
         {
             c=s[i];
-            
-            if(s[i] == '(' || s[i] == '{' || s[i] == '[')
+            if(c == '(' || c == '{' || c == '[')
                 stk.push(c);
-            
-            else if(c==')')
-            {
-                if(stk.empty()==false && stk.top() == '(')
-                    stk.pop();
-                
-                else
-                    return 0;
-            }
-            
-            else if(c=='}')
-            {
-                if(stk.empty()==false && stk.top() == '{')
-                    stk.pop();
-                
-                else
-                    return 0;
-            }
             
             else
             {
-                if(stk.empty()==false && stk.top() == '[')
-                    stk.pop();
+                if(c == ')')
+                {
+                    if(stk.empty() == false && stk.top() == '(')
+                        stk.pop();
+                    
+                    else
+                        return 0;
+                }
                 
-                else
-                    return 0;
+                if(c == '}')
+                {
+                    if(stk.empty() == false && stk.top() == '{')
+                        stk.pop();
+                    
+                    else
+                        return 0;
+                }
+                
+                if(c == ']')
+                {
+                    if(stk.empty() == false && stk.top() == '[')
+                        stk.pop();
+                    
+                    else
+                        return 0;
+                }
             }
+            
+            i++;
         }
         
-        if(stk.empty() == true)
+        if(stk.empty())
             return true;
         
         else
