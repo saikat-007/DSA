@@ -1,41 +1,46 @@
 class Solution {
 public:
-    
-    string crackPassword(string &s,int &i,int size)
+    string getDecoded(string &s , int &i)
     {
         string res;
-        while(i<size && s[i]!=']')
+        int k = 0;
+        while(i < s.size() && s[i]!=']')
         {
+            
             if(isdigit(s[i]))
             {
-                int k=0;
-                while(i<size && isdigit(s[i]))
+                while(i < s.size() && isdigit(s[i]))
                 {
-                    k=k*10+s[i++]-'0';   // for getting the number before opening bracket
+                    k=k*10 + (s[i] - '0');
+                    i++;
                 }
-                i++;   // to skip opening bracket
-                string temp = crackPassword(s,i,size);
-
+                 
+            }
+            
+            else if(s[i] == '[')
+            {
+                i++;
+                string temp = getDecoded(s,i);
+            
                 while(k>0)
                 {
-                    res+=temp;
-                    k--;
+                  res+=temp;
+                  k--;
                 }
-
-                i++; // for skipping closing brackets
-
+                
+                i++;
+                k=0;
             }
+            
             else
                 res+=s[i++];
         }
-
         return res;
+        
     }
-    
-    string decodeString(string s) 
+    string decodeString(string s)
     {
-        int size = s.size();
         int i=0;
-        return crackPassword(s,i,size);
+        return getDecoded(s,i);
     }
 };
