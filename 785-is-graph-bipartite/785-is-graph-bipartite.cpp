@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //key idea : bipartite graph is a graph which can be colored using 2 color such that no two adjascent node have same color
+    
     bool Bipartite(int s,vector<vector<int>>graph,vector<int>&color)
     {
         color[s] = 1;
@@ -15,7 +18,7 @@ public:
             {
                 if(color[it] == -1)
                 {
-                    color[it] = 1 - color[curr];
+                    color[it] = 1 - color[curr];   // for flipping color 1-> red 0 -> blue -1 -> no color
                     q.push(it);
                 }
                 
