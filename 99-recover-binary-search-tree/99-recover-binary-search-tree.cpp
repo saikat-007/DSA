@@ -11,6 +11,9 @@
  */
 class Solution {
 public:
+    /*
+    !------------Brute force----------!
+    
     vector<int>v;
     int i=0;
     void inorder(TreeNode*root)
@@ -46,5 +49,52 @@ public:
         inorder(root);
         sort(v.begin(),v.end());
         recovering(root);
+    }
+    
+    */
+    
+    
+    //optimised
+    TreeNode*first,*prev,*middle,*last;
+    
+    void inorder(TreeNode*root)
+    {
+        if(root!=NULL)
+        {
+            inorder(root->left);
+            
+            if(prev != NULL && (root -> val) < (prev -> val))
+            {
+                if(first == NULL)
+                {
+                    first = prev;
+                    middle = root;
+                }
+                
+                else
+                    last = root;
+            }
+            
+            prev = root;
+            
+            inorder(root -> right);
+        }
+        
+        else
+            return;
+    }
+    
+    void recoverTree(TreeNode* root)
+    {
+        first = middle = last = NULL;
+        prev = new TreeNode(INT_MIN);
+        
+        inorder(root);
+        if(first && last)
+            swap(first->val , last->val);
+        
+        else if(first && middle)
+            swap(first->val , middle->val);
+            
     }
 };
