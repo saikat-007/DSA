@@ -31,7 +31,10 @@ public:
         int n = image[0].size();
         
         int color = image[sr][sc];
-        if(color == newColor)
+        
+        // without this condition it will throw an runtime error cause if both the colors are same then the recursion will never stop and will lead to stack overflow
+        
+        if(color == newColor)      
             return image;
         
         dfs(sr , sc , m , n , image , color , newColor);
