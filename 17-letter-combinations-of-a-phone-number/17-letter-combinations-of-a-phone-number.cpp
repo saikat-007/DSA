@@ -1,27 +1,27 @@
 class Solution {
 public:
-    
-    vector<string>getVector(string &d,int i,map<int,string>&mp)
+    vector<string> getCombination(string &digits , int i , map<int,string>&mp)
     {
-        if(i == d.size())
+        if(i == digits.size())
             return {""};
         
-        vector<string>temp;
-        temp=getVector(d,i+1,mp);
+        vector<string>temp = getCombination(digits , i+1 , mp);
         
         vector<string>res;
-        for(auto a:mp[d[i]-'0'])
+        
+        for(auto x : mp[digits[i]- '0'])
         {
-            for(auto x:temp)
+            for(auto y : temp)
             {
-                res.push_back(a+x);
+                res.push_back(x+y);
             }
         }
+        
         return res;
     }
     vector<string> letterCombinations(string digits)
     {
-        if(digits.size() == 0)
+        if(digits.size() == 0)    
             return {};
         
         map<int,string>mp;
@@ -34,6 +34,6 @@ public:
         mp[8]="tuv";
         mp[9]="wxyz";
         
-        return getVector(digits,0,mp);
+        return getCombination(digits,0,mp);
     }
 };
