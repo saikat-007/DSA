@@ -1,54 +1,56 @@
 class Solution {
 public:
-    
-    bool isvalid(int i , int j , int m , int n ,vector<vector<char>>& board)
+    bool isvalid (int i , int j , int m , int n , vector<vector<char>>& board)
     {
-        if(i >= 0 && i < m && j >= 0 && j < n && board[i][j] == 'O')
+        if(i >= 0 && j >= 0 && i < m && j < n && board[i][j] == 'O')
             return true;
         
         return false;
     }
-    void dfs(int i , int j , int m , int n ,vector<vector<char>>& board)
+    
+    void dfs(int i , int j , int m , int n , vector<vector<char>>& board)
     {
         board[i][j] = 'B';
         
-        if(isvalid(i+1 , j , m , n , board))
-            dfs(i+1 , j , m , n , board);
+        if(isvalid(i+1,j,m,n,board))
+            dfs(i+1,j,m,n,board);
         
-        if(isvalid(i-1 , j , m , n , board))
-            dfs(i-1 , j , m , n , board);
+        if(isvalid(i,j+1,m,n,board))
+            dfs(i,j+1,m,n,board);
         
-        if(isvalid(i , j + 1 , m , n , board))
-            dfs(i , j + 1 , m , n , board);
+        if(isvalid(i-1,j,m,n,board))
+            dfs(i-1,j,m,n,board);
         
-        if(isvalid(i , j - 1 , m , n , board))
-            dfs(i , j - 1 , m , n , board);
+        if(isvalid(i,j-1,m,n,board))
+            dfs(i,j-1,m,n,board);
     }
     
     void solve(vector<vector<char>>& board)
     {
-        int m = board.size();
+        int m = board.size() ;
         int n = board[0].size();
-        for(int i = 0 ; i < m ; i++)    
+        
+        for(int i = 0 ; i < m ; i++)
         {
             int j = 0;
             if(board[i][j] == 'O')
-                dfs(i , j , m , n , board);
+                dfs(i,j,m,n,board);
             
-            j = n - 1;
+            j = n-1;
             if(board[i][j] == 'O')
-                dfs(i , j , m , n , board);
+                dfs(i,j,m,n,board);
+            
         }
         
-        for(int j = 0 ; j < n ; j++)    
+        for(int j = 0 ; j < n ; j++)
         {
-            int i = 0;
+           int i = 0;
             if(board[i][j] == 'O')
-                dfs(i , j , m , n , board);
+                dfs(i,j,m,n,board);
             
-            i = m - 1;
+            i = m-1;
             if(board[i][j] == 'O')
-                dfs(i , j , m , n , board);
+                dfs(i,j,m,n,board);
         }
         
         for(int i = 0 ; i < m ; i++)
