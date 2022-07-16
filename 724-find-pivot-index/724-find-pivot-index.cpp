@@ -3,29 +3,32 @@ public:
     int pivotIndex(vector<int>& nums)
     {
         int sum = 0;
-        int leftsum=0;
-        bool flag=false;
-        int n =nums.size();
+        if(nums.size() == 1)
+            return 0;
+        
+        for(int i = 0 ; i < nums.size() ; i++)
+        {
+            sum+=nums[i];
+        }
+        
+        int leftsum = 0;
+        bool flag = false;
         int res;
         
-        if(n == 1)
-            return n;
-        for(int i=0;i<n;i++)
-            sum+=nums[i];
-        
-        for(int i=0;i<n;i++)
+        for(int i = 0 ; i < nums.size() ; i++)
         {
-            sum=sum-nums[i];
+            sum-=nums[i];
             if(sum == leftsum)
             {
-                res=i;
+                res = i;
                 flag = true;
                 break;
             }
             leftsum+=nums[i];
         }
+        
         if(flag == false)
-            res= -1;
+            return -1;
         
         return res;
     }
