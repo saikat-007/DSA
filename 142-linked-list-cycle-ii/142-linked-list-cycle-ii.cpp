@@ -10,23 +10,18 @@ class Solution {
 public:
     ListNode *detectCycle(ListNode *head)
     {
-        ListNode*hare=head,*turt=head;
-        while(turt!=NULL && turt->next!=NULL)
+        unordered_set<ListNode*>st;
+        
+        ListNode*p = head;
+        while(st.find(p) == st.end())
         {
-            hare=hare->next;
-            turt=turt->next->next;
+            st.insert(p);
+            if(p == NULL)
+                return NULL;
             
-            if(turt == hare)
-            {
-                hare=head;
-                while(hare!=turt)
-                {
-                    hare=hare->next;
-                    turt=turt->next;
-                }
-                return hare;
-            }
+            p = p->next;
         }
-        return NULL;
+        
+        return p;
     }
 };
