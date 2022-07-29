@@ -1,46 +1,41 @@
 class Solution {
 public:
+    
     string getDecoded(string &s , int &i)
     {
-        string res;
-        int k = 0;
-        while(i < s.size() && s[i]!=']')
+        string ans = "";
+        int num = 0;
+        while(i < s.size() && s[i] != ']')
         {
-            
             if(isdigit(s[i]))
             {
-                while(i < s.size() && isdigit(s[i]))
-                {
-                    k=k*10 + (s[i] - '0');
-                    i++;
-                }
-                 
+                num = num*10 + (s[i] - '0');
             }
             
             else if(s[i] == '[')
             {
-                i++;
+                ++i;
                 string temp = getDecoded(s,i);
-            
-                while(k>0)
+                while(num > 0)
                 {
-                  res+=temp;
-                  k--;
+                    ans += temp;
+                    num --;
                 }
-                
-                i++;
-               // k=0;
             }
             
             else
-                res+=s[i++];
+            {
+                ans += s[i];
+            }
+            i++;
         }
-        return res;
         
+        return ans;
     }
+    
     string decodeString(string s)
     {
-        int i=0;
-        return getDecoded(s,i);
+        int idx = 0;
+        return getDecoded(s,idx);
     }
 };
