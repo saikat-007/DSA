@@ -12,12 +12,6 @@ public:
             else if(s[i] != '#')
                 stk1.push(s[i]);
         }
-        
-        // while(!stk1.empty())
-        // {
-        //     cout<<stk1.top();
-        //     stk1.pop();
-        // }
        
         for(int i = 0 ; i < t.size() ; i++)
         {
@@ -27,14 +21,6 @@ public:
             else if(t[i] != '#')
                 stk2.push(t[i]);
         }
-        
-        // cout<<endl;
-        //  while(!stk2.empty())
-        // {
-        //     cout<<stk2.top();
-        //     stk2.pop();
-        // }
-        
         
         while(!stk1.empty() && !stk2.empty())
         {
