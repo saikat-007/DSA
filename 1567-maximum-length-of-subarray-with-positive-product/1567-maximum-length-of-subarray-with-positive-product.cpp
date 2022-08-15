@@ -32,10 +32,14 @@ public:
                     lastNegative = i;
                 }
                 
+                //If the subarray has even number of negative numbers, the whole subarray has positive product.
+                
                 if(negCount % 2 == 0)
                 {
                     maxlen = max(maxlen , i - lastZero);
                 }
+                
+                //Otherwise, we have two choices, either - remove the prefix till the first negative element in this subarray, or remove the suffix starting from the last negative element in this subarray.
                 
                 else
                 {
