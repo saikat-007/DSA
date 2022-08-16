@@ -2,20 +2,13 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices)
     {
-        int n = prices.size();
-        vector<int>max_profit_after_current_day(n);
+        int min_buying_price = INT_MAX;
+        int maxProf = 0;
         
-        max_profit_after_current_day[n-1] = prices[n-1];
-        
-        for(int i = n-2 ; i >= 0 ; i--)
+        for(int i = 0 ; i < prices.size() ; i++)
         {
-            max_profit_after_current_day[i] =  max(max_profit_after_current_day[i+1] , prices[i]);
-        }
-        
-        int maxProf = INT_MIN;
-        for(int i = 0 ; i < n ; i++)
-        {
-            maxProf = max(maxProf , max_profit_after_current_day[i] - prices[i]);
+            min_buying_price = min(min_buying_price,prices[i]);
+            maxProf = max(maxProf , prices[i] - min_buying_price );
         }
         
         return maxProf;
